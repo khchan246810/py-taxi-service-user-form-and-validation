@@ -19,7 +19,11 @@
         <p><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>
         <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>
 
-        <a href="{% url 'taxi:driver-update' pk=driver.pk %}"
+    {% empty %}
+      <p>No cars!</p>
+    {% endfor %}
+
+    <a href="{% url 'taxi:driver-update' pk=driver.pk %}"
           class="btn btn-primary">
           Update license
         </a>
@@ -28,8 +32,6 @@
           class="btn btn-danger">
           Delete driver
         </a>
-    {% empty %}
-      <p>No cars!</p>
-    {% endfor %}
+        
   </div>
 {% endblock %}
